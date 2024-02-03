@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    cursor: pointer;
+}
+
 body {
     background-image: url('/img/background.svg');
     background-size: cover;
