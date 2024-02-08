@@ -12,19 +12,19 @@
 <body>
     <custom-header></custom-header>
     <div class="login">
-        <form method="post">
+        <form action="login.php" method="post">
             <div class="header-form">
-                <h1>Rejestracja</h1><br>
+                <h1>Logowanie</h1><br>
             </div>
             <div class="input-form">
-                <input type="text" class="input-field" placeholder="Login" autocomplete="off"><br><br>
-                <input type="password" class="input-field" placeholder="Hasło" autocomplete="off"><br><br>
+                <input type="text" class="input-field" placeholder="Login" autocomplete="off" id="login" name="login"><br><br>
+                <input type="password" class="input-field" placeholder="Hasło" autocomplete="off" id="password" name="password"><br><br>
             </div>
             <div class="submit-form">
-                <input type="submit" class="submit-button" value="Stwórz konto"><br><br>
+                <input type="submit" class="submit-button" value="Zaloguj"><br><br>
             </div>
             <div class="acc-link">
-                <p>Posiadasz konto? <a href="logowanie.html">Zaloguj się</a></p>
+                <p>Nie posiadasz konta? <a href="rejestracja.php">Stwórz konto</a></p>
             </div>
         </form>
     </div>

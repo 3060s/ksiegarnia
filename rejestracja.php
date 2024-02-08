@@ -14,17 +14,17 @@
     <div class="login">
         <form method="post">
             <div class="header-form">
-                <h1>Logowanie</h1><br>
+                <h1>Rejestracja</h1><br>
             </div>
             <div class="input-form">
                 <input type="text" class="input-field" placeholder="Login" autocomplete="off"><br><br>
                 <input type="password" class="input-field" placeholder="Hasło" autocomplete="off"><br><br>
             </div>
             <div class="submit-form">
-                <input type="submit" class="submit-button" value="Zaloguj"><br><br>
+                <input type="submit" class="submit-button" value="Stwórz konto"><br><br>
             </div>
             <div class="acc-link">
-                <p>Nie posiadasz konta? <a href="rejestracja.html">Stwórz konto</a></p>
+                <p>Posiadasz konto? <a href="logowanie.php"> Zaloguj się</a></p>
             </div>
         </form>
     </div>
