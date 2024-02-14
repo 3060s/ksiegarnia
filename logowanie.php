@@ -1,3 +1,19 @@
+<?php
+require_once './class.AuthService.php';
+
+if (isset($_POST["submit"])) {
+    $username = trim($_POST["login"]);
+    $password = trim($_POST["password"]);
+
+    $error = null;
+
+    if (!AuthService::login($username, $password, $error)) {
+        if ($error) {
+            echo $error;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -5,14 +21,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/account.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Logowanie</title>
-    <script type="module" src="js/main.js"></script>
 </head>
 <body>
-    <custom-header></custom-header>
+    <?php require_once "./components/header.php"; ?>
     <div class="login">
-        <form action="login.php" method="post">
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <div class="header-form">
                 <h1>Logowanie</h1><br>
             </div>
@@ -21,7 +35,7 @@
                 <input type="password" class="input-field" placeholder="Hasło" autocomplete="off" id="password" name="password"><br><br>
             </div>
             <div class="submit-form">
-                <input type="submit" class="submit-button" value="Zaloguj"><br><br>
+                <input type="submit" class="submit-button" value="Zaloguj" name="submit"><br><br>
             </div>
             <div class="acc-link">
                 <p>Nie posiadasz konta? <a href="rejestracja.php">Stwórz konto</a></p>
