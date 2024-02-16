@@ -3,17 +3,17 @@
 ?>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<header class="header">
+<header class="header">    
     <a href="index.php" class="logo">Księgarnia</a>
     <nav class="navbar">
-        <a href="ksiazki.php">Książki</a>
-        <a href="#">Home</a>
-        <a href="#">Home</a>
-        <a href="koszyk.php">Koszyk</a>
+        <a href="ksiazki.php" class="nav-link">Książki</a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="koszyk.php" class="nav-link">Koszyk</a>
         <?php if(isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
-            <a href="#">Admin</a>
+            <a href="admin.php" class="nav-link">Admin</a>
         <?php endif; ?>
-        <a href="logowanie.php"><span class="material-symbols-outlined" style="font-size: 30px;">account_circle</span></a>
+        <a href="logowanie.php" class="nav-link"><span class="material-symbols-outlined" style="font-size: 30px;">account_circle</span></a>
         <?php if(isset($_SESSION['login']) && $_SESSION['login']): ?>
             <a><span class="material-symbols-outlined" id="logout" style="font-size: 30px;">logout</span></a>
         <?php endif; ?>
@@ -30,15 +30,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(response.ok) {
                     console.log('Wylogowano');
                     location.reload();
-                    alert("test")
+                    alert('Wylogowano')
                 } else {
                     console.error('Nie udało się wylogować');
+                    alert('Wystąpił błąd podczas wylogowania :(')
                 }
             })
             .catch(function(error) {
                 console.error('Error:', error);
             });
         });
+    }
+});
+
+
+const currentUrl = window.location.href;
+
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+    if (link.href === currentUrl) {
+        link.classList.add('current-page');
     }
 });
 </script>

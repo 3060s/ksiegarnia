@@ -75,4 +75,23 @@ final class AuthService
 
         return true;
     }
+
+
+    public static function insertBook(string $title, string $description, string $author, float $price, int $releaseYear, string|null &$error): bool
+    {
+        $connection = Database::getConnection();
+
+        $stmt = $connection->prepare("INSERT INTO ksiazka (tytul, opis, autor, cena, rok_wydania) VALUES (?, ?, ?, ?, ?)");
+
+        $stmt->bind_param("sssid", $title, $description, $author, $price, $releaseYear);
+
+        if (!$stmt->execute()) {
+            $error = "Nie udało się wprowadzić książki do bazy danych!.";
+            return false;
+        }
+
+        $stmt->close();
+
+        return true;
+    }
 }

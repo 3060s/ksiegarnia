@@ -61,8 +61,9 @@ body {
     left: 0;
     width: 0;
     height: 4px;
-    background: white;
+    background: white; 
     transition: 0.3s;
+    border-radius: 100px;
 }
 
 .navbar a:hover::before {
@@ -71,4 +72,12 @@ body {
 
 .material-symbols-outlined {
     width: 0;
+}
+
+.navbar .nav-link.current-page {
+    color: rgb(107, 148, 226);
+}
+
+.navbar a.current-page:hover::before {
+    width: 100%;
 }
