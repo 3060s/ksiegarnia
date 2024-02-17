@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 45%;
+    width: 60%;
     height: 100%;
     padding: 30px;
     border: 2px solid black;
@@ -31,12 +31,12 @@ body {
 .input-form {
     display: inline-block;
     width: auto;
-    max-width: 100%;
+    max-width: 40%;
     margin: 0 auto;
 }
 
 .input-form .input-field {
-    width: 100%;
+    width: 70%;
     height: 60px;
     font-size: 17px;
     padding: 0 25px;
@@ -73,13 +73,13 @@ body {
 .opis {
     display: inline-block;
     text-align: right;
-    width: 60%;
+    width: 50%;
 }
 
 .opis .input-field {
     width: 100%;
     margin-left: 10%;
-    height: 300px;
+    height: 350px;
     font-size: 17px;
     padding: 25px 25px;
     margin-bottom: 15px;

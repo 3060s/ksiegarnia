@@ -1,11 +1,17 @@
 .genres {
-    margin: 6% 0% 0% 3%;
+    margin: 0% 0% 0% 1%;
     padding: 15px 5px 15px 30px;
     border: 2px solid black;
-    width: 17%;
     height: auto;
     background-color: rgb(107, 148, 226);
     border-radius: 25px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 7%;
 }
 
 ul.nav-list {
@@ -31,4 +37,31 @@ ul.nav-list {
 .nav-list a:hover {
     color: black;
     transition: 0.20s;
+}
+
+.navlist .nav-ksiazki.current-page {
+    background-color: lightblue;
+    color: black;
+    transition: 0.20s;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-left: 60px;
+    flex-grow: 1;
+}
+.book-card {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    height: auto;
+    width: 300px;
+    background-color: rgb(107, 148, 226);
+}
+.book-img {
+    width: auto;
+    height: 200px;
+    margin: 0 auto;
 }

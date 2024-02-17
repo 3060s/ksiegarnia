@@ -30,9 +30,18 @@ else
             <div class="input-form">
                 <input type="text" class="input-field" placeholder="Tytuł" autocomplete="off" id="tytul" name="tytul" maxlength="50"><br><br>
                 <input type="text" class="input-field" placeholder="Autor" autocomplete="off" id="autor" name="autor" maxlength="50"><br><br>
+                <select class="input-field" placeholder="Gatunek" autocomplete="off" id="gatunek" name="gatunek"><br><br>
+                    <option value="Kryminały">Kryminały</option>
+                    <option value="Thrillery">Thrillery</option>
+                    <option value="Przygodowe">Przygodowe</option>
+                    <option value="Komedie">Komedie</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Naukowe">Naukowe</option>
+                </select>    
                 <input type="text" class="input-field" placeholder="Cena (kropka)" autocomplete="off" id="cena" name="cena" maxlength="7"><br><br>
                 <input type="text" class="input-field" placeholder="Rok wydania" autocomplete="off" id="rok_wydania" name="rok_wydania" maxlength="4"><br><br>
-            </div> <!--No trzeba dodac input z urlem do zdjecia jakis empik czy cos xd-->
+                <input type="text" class="input-field" placeholder="URL (link do zdjęcia)" autocomplete="off" id="url" name="url" maxlength="200"><br><br>
+            </div>
             <div class="opis">
                 <textarea class="input-field" placeholder="Opis" autocomplete="off" id="opis" name="opis" maxlength="500"></textarea><br><br>
             </div>
@@ -69,12 +78,14 @@ if (isset($_POST['submit'])) {
     $title = $_POST['tytul'];
     $description = $_POST['opis'];
     $author = $_POST['autor'];
+    $genre = $_POST['gatunek'];
     $price = $_POST['cena'];
     $releaseYear = $_POST['rok_wydania'];
+    $url = $_POST['url'];
 
 
     $error = null;
-    if (AuthService::insertBook($title, $description, $author, $price, $releaseYear, $error)) {
+    if (AuthService::insertBook($title, $description, $author, $genre, $price, $releaseYear, $url, $error)) {
         echo "Poprawnie wprowadzono książke do bazy danych.";
     } else {
         echo "Error: " . $error;

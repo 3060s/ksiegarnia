@@ -77,13 +77,13 @@ final class AuthService
     }
 
 
-    public static function insertBook(string $title, string $description, string $author, float $price, int $releaseYear, string|null &$error): bool
+    public static function insertBook(string $title, string $description, string $author, string $genre, float $price, int $releaseYear, string $url, string|null &$error): bool
     {
         $connection = Database::getConnection();
 
-        $stmt = $connection->prepare("INSERT INTO ksiazka (tytul, opis, autor, cena, rok_wydania) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $connection->prepare("INSERT INTO ksiazka (tytul, opis, autor, gatunek, cena, rok_wydania, `url`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("sssid", $title, $description, $author, $price, $releaseYear);
+        $stmt->bind_param("ssssids", $title, $description, $author, $genre, $price, $releaseYear, $url);
 
         if (!$stmt->execute()) {
             $error = "Nie udało się wprowadzić książki do bazy danych!.";
@@ -93,5 +93,35 @@ final class AuthService
         $stmt->close();
 
         return true;
+    }
+
+
+    public static function getBooks(): array
+    {
+        $connection = Database::getConnection();
+        
+        $query = "SELECT * FROM ksiazka";
+        
+        $result = $connection->query($query);
+        
+        if (!$result) {
+            return [];
+        }
+        
+        $books = [];
+        while ($row = $result->fetch_assoc()) {
+            $book = new stdClass();
+            $book->title = $row['tytul'];
+            $book->description = $row['opis'];
+            $book->author = $row['autor'];
+            $book->genre = $row['gatunek'];
+            $book->price = $row['cena'];
+            $book->releaseYear = $row['rok_wydania'];
+            $book->url = $row['url'];
+            
+            $books[] = $book;
+        }
+        
+        return $books;
     }
 }
